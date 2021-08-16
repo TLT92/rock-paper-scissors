@@ -1,15 +1,21 @@
 let computerSelection = computerPlay();
 let playerSelection;
-let outcome;
 let x = 0;
 let y = 0;
+let z = 0;
+
+if (x == 5) {
+    result.textContent = `CONGRATULATIONS! YOU'VE WON!`;
+} else if (z == 5) {
+    result.textContent = `YOU'VE LOST THE GAME LOL - LOSER!`;
+}  
 
 function computerPlay() {
-        let x = Math.random();
-        if (x <= 0.33) {
+        let a = Math.random();
+        if (a <= 0.33) {
             return "Rock";
         }
-        else if (x >= 0.33 && x <= 0.66 ) {
+        else if (a >= 0.33 && a <= 0.66 ) {
             return "Paper";
         }
         else {
@@ -17,50 +23,73 @@ function computerPlay() {
         }
     }
 
-function playRound (playerSelection) {  
+function playRound (playerSelection) {
     computerSelection = computerPlay();
     if (playerSelection == "rock") {
         if (computerSelection == "Scissors") {
             x += 1;
-            result.textContent = "You win! Rock beats Scissors";
-            console.log("Yay");
-            return "You win! Rock beats Scissors"
+            result.textContent = `You win! Rock beats Scissors \nScore \nYou ${x}:${z} Computer`;
+            if (x == 5) {
+                result.textContent = `You win! Rock beats Scissors \nScore \nYou ${x}:${z} Computer \nCONGRATULATIONS! YOU'VE WON!`;
+                x = 0;
+                z = 0;
+            }
         } else if (computerSelection == "Paper") {
-            result.textContent = "You lose! Paper beats Rock";
-            return "You lose! Paper beats Rock"
+            z += 1;
+            result.textContent = `You lose! Paper beats Rock \nScore \nYou ${x}:${z} Computer`;
+            if (z == 5) {
+                result.textContent = `You lose! Paper beats Rock \nScore \nYou ${x}:${z} Computer \nYOU'VE LOST THE GAME LOL - LOSER!`;
+                x = 0;
+                z = 0;
+            }
         } else {
-            y += 1;
-            result.textContent = "It's a draw. Rock vs. Rock!";
-            return "It's a draw. Rock vs. Rock!"
+            result.textContent = `It's a draw. Rock vs. Rock! \nScore \nYou ${x}:${z} Computer`;
         }
     } else if (playerSelection == "paper") {
         if (computerSelection == "Rock") {
            x += 1;
-           result.textContent = "You win! Paper beats Rock";
-           return "You win! Paper beats Rock"
+           result.textContent = `You win! Paper beats Rock \nScore \nYou ${x}:${z} Computer`;
+           if (x == 5) {
+                result.textContent = `You win! Paper beats Rock \nScore \nYou ${x}:${z} Computer \nCONGRATULATIONS! YOU'VE WON!`;
+                x = 0;
+                z = 0;
+        }
         } else if (computerSelection == "Scissors") {
-            result.textContent = "You lose! Scissors beat Rock";
-            return "You lose! Scissors beat Rock"
+            z += 1;
+            result.textContent = `You lose! Scissors beat Rock \nScore \nYou ${x}:${z} Computer`;
+            if (z == 5) {
+                result.textContent = `You lose! Scissors beat Rock \nScore \nYou ${x}:${z} Computer \nYOU'VE LOST THE GAME LOL - LOSER!`;
+                x = 0;
+                z = 0;
+            }
         } else {
-            y += 1;
-            result.textContent = "It's a draw - Paper vs. Paper!";
-            return "It's a draw - Paper vs. Paper!"
+            result.textContent = `It's a draw - Paper vs. Paper! \nScore \nYou ${x}:${z} Computer`;
         }
     } else if (playerSelection == "scissors") {
         if (computerSelection == "Paper") {
             x += 1;
-            result.textContent = "You win! Scissors beat Paper";
-            return "You win! Scissors beat Paper"
+            result.textContent = `You win! Scissors beat Paper \nScore \nYou ${x}:${z} Computer`;
+            if (x == 5) {
+                result.textContent = `You win! Scissors beat Paper \nScore \nYou ${x}:${z} Computer \nCONGRATULATIONS! YOU'VE WON THE GAME!`;
+                x = 0;
+                z = 0;
+            }
          } else if (computerSelection == "Rock") {
-            result.textContent = "You lose! Rock beats Scissors";
-             return "You lose! Rock beats Scissors"
+            z += 1;
+            result.textContent = `You lose! Rock beats Scissors \nScore \nYou ${x}:${z} Computer`;
+            if (z == 5) {
+                result.textContent = `You lose! Rock beats Scissors \nScore \nYou ${x}:${z} Computer  \nYOU'VE LOST THE GAME LOL - LOSER!`;
+                x = 0;
+                z = 0;
+            }
          } else {
-             y += 1;
-             result.textContent = "It's a draw. Scissors vs. Scissors!";
-             return "It's a draw. Scissors vs. Scissors!"
+            result.textContent = `It's a draw. Scissors vs. Scissors! \nScore \nYou ${x}:${z} Computer`;
          }
-    }
+    }  
 }
+
+
+
 
 // neuer Code ab hier
 
@@ -76,7 +105,8 @@ scissors.addEventListener('click', function() {playRound("scissors")});
 const div = document.createElement('div');
 div.setAttribute('id', 'result'); 
 container.appendChild(div);
-'div'.textContent = 'Hello World!'
+
+result.setAttribute('style', 'white-space: pre;')
 
 /* Pseudocode
 bei click = check, welcher Button geclickt wurde
